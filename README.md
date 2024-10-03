@@ -6,7 +6,7 @@ Should run fine with `npm i` followed by `npm start`. Tested on my local machine
 
 ### Overall design
 
-With the requirement that each question should only appear after the previous one was answered, I decided to go with a "conversation" based approach to mirror the experience of an in-person consultation. The UI was designed to meet the brief but is otherwise unrefined
+With the requirement that each question should only appear after the previous one was answered, I decided to go with a "conversation" based approach to mirror the experience of an in-person consultation. This approach should also be easily extensible to include free-text answers if needed in the future. The UI was designed to meet the brief but is otherwise unrefined
 
 Due to the importance of each answer, I added a slight delay after answering each question so users could not accidentally input wrong answers by double-clicking the button - also hopefully ensuring they take the time to read each new question
 
@@ -17,7 +17,7 @@ Didn't wan't the extra boiler plate of using a library here. I think the state i
 ### Why "Yes" | "No" instead of boolean?
 
 1. Extensible for other questions with multiple choice answers
-2. Avoids the "ternary boolean" situation with a nullable boolean. Will avoid any issues where undefined is incorrectly considered the same as `false` due to truthiness concerns
+2. Avoids the "ternary boolean" situation with a nullable boolean. Will avoid any issues where undefined is incorrectly considered the same as `false` due to thoughtless truthiness checks
 
 ### What compromises were made for speed of delivery?
 
@@ -25,5 +25,7 @@ A number - including but not limited to
 
 1. UI page design, colours & theming
 2. CSS variables could be more robust, and also could be used for margins/padding/breakpoints etc
-3. Animations for conversation messages - "..." typing animation would further sell the "conversation" aspect
-4. Unit Testing
+3. No animations for conversation messages - "..." typing animation would further sell the conversation experience.
+4. No avatars/profile pictures for conversation messages
+5. Missing "Please review and confirm your answers" confirmation step
+6. No Unit Testing / snapshot testing

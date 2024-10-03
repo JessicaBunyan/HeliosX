@@ -33,6 +33,11 @@ export function Consultation({ questions }: IConsultationProps) {
 		<div className={styles.consultation}>
 			<div ref={scrollRef} className={styles.conversation}>
 				<div className={styles.conversationInner}>
+					<Message
+						message={
+							"Welcome to your online consultation for Genovian Pear Allergy medication. We will ask you a few questions to check it is safe to prescribe this medication to you"
+						}
+					/>
 					{questions.map((q, index) => {
 						if (answers.length < index) {
 							return null;
@@ -44,17 +49,16 @@ export function Consultation({ questions }: IConsultationProps) {
 							</Fragment>
 						);
 					})}
+					{consultationComplete && (
+						<Message
+							message="Thank you for completing your consultation. We will be in touch once our pharmacist has reviewed your
+						answers"
+						/>
+					)}
 				</div>
 			</div>
 			<div className={styles.responseArea}>
-				{consultationComplete ? (
-					<p>
-						Thank you for completing your consultation. We will be in touch once our pharmacist has reviewed your
-						details
-					</p>
-				) : (
-					<RadioInput key={answers.length} disabled={disabled} onSubmit={addAnswer} />
-				)}
+				{!consultationComplete && <RadioInput key={answers.length} disabled={disabled} onSubmit={addAnswer} />}
 			</div>
 		</div>
 	);
