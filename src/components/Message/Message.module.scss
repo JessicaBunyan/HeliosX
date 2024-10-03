@@ -1,0 +1,20 @@
+.message{
+
+    margin: .25rem;
+    border:solid 1px;
+    padding: .75rem;
+    border-radius: .5rem;;
+    max-width: 70%;
+
+    
+    &.primary{
+        align-self: flex-end;
+        background: var(--color-primary);
+        border-color: var(--color-primary-dark);
+    }
+    &.secondary{
+        align-self: flex-start;
+        background: var(--color-secondary);
+        border-color: var(--color-secondary-dark);
+    }
+}

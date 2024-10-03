@@ -1,46 +1,29 @@
-# Getting Started with Create React App
+# Running the app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Should run fine with `npm i` followed by `npm start`. Tested on my local machine with node 22.5.1 and npm 10.8.2
 
-## Available Scripts
+## Notes / Q&A
 
-In the project directory, you can run:
+### Overall design
 
-### `npm start`
+With the requirement that each question should only appear after the previous one was answered, I decided to go with a "conversation" based approach to mirror the experience of an in-person consultation. The UI was designed to meet the brief but is otherwise unrefined
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Due to the importance of each answer, I added a slight delay after answering each question so users could not accidentally input wrong answers by double-clicking the button - also hopefully ensuring they take the time to read each new question
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Why useState over redux? / etc
 
-### `npm test`
+Didn't wan't the extra boiler plate of using a library here. I think the state in this case should be transient as we probably don't want a user to walk away halfway through a consultation and come back to have it half filled. Especially in the case of shared devices etc
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Why "Yes" | "No" instead of boolean?
 
-### `npm run build`
+1. Extensible for other questions with multiple choice answers
+2. Avoids the "ternary boolean" situation with a nullable boolean. Will avoid any issues where undefined is incorrectly considered the same as `false` due to truthiness concerns
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### What compromises were made for speed of delivery?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A number - including but not limited to
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. UI page design, colours & theming
+2. CSS variables could be more robust, and also could be used for margins/padding/breakpoints etc
+3. Animations for conversation messages - "..." typing animation would further sell the "conversation" aspect
+4. Unit Testing

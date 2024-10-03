@@ -1,0 +1,19 @@
+.header{
+    img{
+        max-width: 85vw;;
+        height: 50px;
+        display: block;
+        margin: 1rem auto 1rem auto;;
+    }
+    h1{
+        text-align: center;;
+        margin: 0;
+    }
+}
+
+
+@media screen and (min-width: 1000px) {
+	.header img {
+		margin: 1rem 0 0 2rem;
+	}
+}

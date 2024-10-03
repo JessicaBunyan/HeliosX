@@ -1,0 +1,49 @@
+.consultation {
+	background: inherit;
+	color: inherit;
+	height: 100%;
+	width: calc(100% - 4rem);
+	border: solid 1px white;
+	border-radius: 1rem;
+	margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1px;
+
+	.conversation {
+		display: flex;
+        // This causes the container to grow upwards when content is added, keeping scrollbar at the bottom as desired
+		flex-direction: column-reverse; 
+		overflow-y: auto;
+        flex-grow: 2;;
+        flex-basis: 30vh;
+        padding: 0.5rem;
+	}
+    
+    // This single container keeps all the messages so the content isn't reversed by the parent's reversed flex-direction
+    .conversationInner{
+        display: flex;
+        flex-direction: column;
+    }
+
+	.responseArea {
+        border-top: solid 1px white;
+		height: 5rem;
+        flex-grow: 0;;
+        padding: 1px;
+	}
+
+    p{
+        margin: 0;
+        padding: .5rem 1rem .0 1rem;
+        font-weight: bold;;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+	.consultation {
+		margin: 2rem auto;
+		width: 50vw;
+	}
+}
